@@ -1,0 +1,13 @@
+Why it is engineering
+Modern AI systems depend on high-quality data, large-scale compute, storage, deployment pipelines, monitoring, and integration with existing software. They also need to handle security, model drift, latency, and cost, which are all engineering problems rather than pure research problems.
+
+Simple way to think about it
+The model is often the easy part; the difficult part is everything around it: getting the data, cleaning it, training it, testing it, deploying it, and keeping it useful after the world changes.
+
+Example
+A chatbot may look smart, but building it for real users requires prompt handling, safety filters, fast servers, logging, fallbacks, and continuous updates. That is why modern AI teams often look more like software and systems engineering teams than only research labs.
+
+In one line
+Modern AI is an engineering challenge because performance in production depends on data, infrastructure,
+reliability, safety, and maintenance, not just on the underlying model.
+
