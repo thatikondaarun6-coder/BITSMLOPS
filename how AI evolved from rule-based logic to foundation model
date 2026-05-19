@@ -1,0 +1,63 @@
+1. Rule-based era
+The first AI systems were expert systems built from human-written rules.
+They worked well in narrow, predictable settings, but they broke easily when inputs changed or became ambiguous.
+
+2. Machine learning era
+AI then shifted to statistical learning, where models learned patterns from examples instead of fixed rules. 
+This reduced manual coding and made AI useful for search, ranking, prediction, and classification at scale.
+
+3. Deep learning era
+Deep learning made another jump by letting models learn features directly from raw data like images, 
+speech, and text. That lowered the need for hand-engineered features and improved performance on complex tasks.
+
+4. Foundation models
+Foundation models are large, general-purpose models trained on huge and diverse datasets. 
+They are pre-trained once, then adapted to many tasks with prompting or fine-tuning, 
+which is why they are more flexible than earlier task-specific systems
+
+__________________________________________________________________________________________________________
+
+Rule-based AI: A thermostat that turns the heater on when the room is cold.
+
+Machine learning AI: A spam filter that learns which emails are spam.
+
+Deep learning AI: A phone that unlocks by recognizing your face.
+
+Foundation model: ChatGPT, which can answer many different kinds of questions.
+
+For your topic, the easiest way to remember it is:
+
+Rules = fixed instructions.
+
+Machine learning = learns from examples.
+
+Deep learning = learns from lots of data.
+
+Foundation model = a big general model that can do many tasks
+
+____________________________________________________________________________________________________________________________
+Here’s the simple year → era mapping:
+
+1950s–1980s: Rule-based AI.
+
+1990s–2010s: Machine learning era.
+
+2010s–late 2010s: Deep learning era.
+
+2020s: Foundation model era.
+
+A quick memory trick:
+
+Rules first.
+
+Then learning from data.
+
+Then deep learning with lots of data.
+
+Then big general models that can do many tasks
+------------------------------------------------------------------------------------------------------------
+
+
+
+
+
