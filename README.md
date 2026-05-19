@@ -1,1 +1,1 @@
-# BITSMLOPS
+# BITSMLOPShow AI evolved from rule-based logic to foundation model
