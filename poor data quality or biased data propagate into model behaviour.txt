@@ -1,0 +1,176 @@
+How does poor data quality or biased data propagate into model behaviour, even when the code is correct?
+
+
+We’ll simulate how biased training data leads to skewed predictions, even though the code itself is correct.
+
+Example: Loan Approval Model with Biased Data
+
+Imagine we’re training a simple classifier to predict loan approvals. The dataset is biased: it contains far fewer positive examples for women than for men, even though gender shouldn’t matter.
+
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+# Step 1: Create a biased dataset
+data = pd.DataFrame({
+    "income": [50, 60, 70, 80, 90, 40, 50, 60, 70, 80],
+    "gender": ["M","M","M","M","M","F","F","F","F","F"],
+    "approved": [1,1,1,1,1,0,0,0,0,0]  # Biased labels: women always denied
+})
+
+# Step 2: Encode categorical variable
+data["gender_encoded"] = data["gender"].map({"M":0, "F":1})
+
+X = data[["income", "gender_encoded"]]
+y = data["approved"]
+
+# Step 3: Train a logistic regression model
+model = LogisticRegression()
+model.fit(X, y)
+
+# Step 4: Test predictions
+test_data = pd.DataFrame({
+    "income": [85, 85],
+    "gender_encoded": [0, 1]  # Male vs Female with same income
+})
+
+predictions = model.predict(test_data)
+print(predictions)
+
+Both test cases have
+identical income
+.
+The only difference is gender.
+Because the training data encoded women as always denied, the model learns that being female strongly predicts rejection.
+Output might look like: [1 0]  Male approved, Female denied — purely due to biased data.
+
+Key Takeaway
+
+The code is correct: logistic regression is implemented properly.
+The data is flawed: biased labels taught the model to discriminate.
+Result: the model perpetuates unfair outcomes, even though technically it’s “working as designed.”
+Example: Correcting Bias in Loan Approval Model
+
+We’ll balance the dataset so that women and men have equal representation in approvals.
+
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+
+# Step 1: Create a balanced dataset
+data = pd.DataFrame({
+    "income": [50, 60, 70, 80, 90, 40, 50, 60, 70, 80],
+    "gender": ["M","M","M","M","M","F","F","F","F","F"],
+    "approved": [1,1,1,1,1,0,1,1,1,1]  # Women now have approvals too
+})
+
+# Step 2: Encode categorical variable
+data["gender_encoded"] = data["gender"].map({"M":0, "F":1})
+
+X = data[["income", "gender_encoded"]]
+y = data["approved"]
+
+# Step 3: Train logistic regression model
+model = LogisticRegression()
+model.fit(X, y)
+
+# Step 4: Test predictions
+test_data = pd.DataFrame({
+    "income": [85, 85],
+    "gender_encoded": [0, 1]  # Male vs Female with same income
+})
+
+predictions = model.predict(test_data)
+print(predictions)
+
+Both test cases have
+identical income
+.
+Because the dataset is balanced, the model learns that income is the real driver, not gender.
+Output might look like:
+[1 1][1 1]Both Male and Female approved — fairer outcome.We’ll simulate how biased training data leads to skewed predictions, even though the code itself is correct.
+
+Example: Loan Approval Model with Biased Data
+
+Imagine we’re training a simple classifier to predict loan approvals. The dataset is biased: it contains far fewer positive examples for women than for men, even though gender shouldn’t matter.
+
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+# Step 1: Create a biased dataset
+data = pd.DataFrame({
+    "income": [50, 60, 70, 80, 90, 40, 50, 60, 70, 80],
+    "gender": ["M","M","M","M","M","F","F","F","F","F"],
+    "approved": [1,1,1,1,1,0,0,0,0,0]  # Biased labels: women always denied
+})
+
+# Step 2: Encode categorical variable
+data["gender_encoded"] = data["gender"].map({"M":0, "F":1})
+
+X = data[["income", "gender_encoded"]]
+y = data["approved"]
+
+# Step 3: Train a logistic regression model
+model = LogisticRegression()
+model.fit(X, y)
+
+# Step 4: Test predictions
+test_data = pd.DataFrame({
+    "income": [85, 85],
+    "gender_encoded": [0, 1]  # Male vs Female with same income
+})
+
+predictions = model.predict(test_data)
+print(predictions)
+
+Both test cases have
+identical income
+.
+The only difference is gender.
+Because the training data encoded women as always denied, the model learns that being female strongly predicts rejection.
+Output might look like: [1 0]  Male approved, Female denied — purely due to biased data.
+
+Key Takeaway
+
+The code is correct: logistic regression is implemented properly.
+The data is flawed: biased labels taught the model to discriminate.
+Result: the model perpetuates unfair outcomes, even though technically it’s “working as designed.”
+Example: Correcting Bias in Loan Approval Model
+
+We’ll balance the dataset so that women and men have equal representation in approvals.
+
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+
+# Step 1: Create a balanced dataset
+data = pd.DataFrame({
+    "income": [50, 60, 70, 80, 90, 40, 50, 60, 70, 80],
+    "gender": ["M","M","M","M","M","F","F","F","F","F"],
+    "approved": [1,1,1,1,1,0,1,1,1,1]  # Women now have approvals too
+})
+
+# Step 2: Encode categorical variable
+data["gender_encoded"] = data["gender"].map({"M":0, "F":1})
+
+X = data[["income", "gender_encoded"]]
+y = data["approved"]
+
+# Step 3: Train logistic regression model
+model = LogisticRegression()
+model.fit(X, y)
+
+# Step 4: Test predictions
+test_data = pd.DataFrame({
+    "income": [85, 85],
+    "gender_encoded": [0, 1]  # Male vs Female with same income
+})
+
+predictions = model.predict(test_data)
+print(predictions)
+
+Both test cases have
+identical income
+.
+Because the dataset is balanced, the model learns that income is the real driver, not gender.
+Output might look like:
+[1 1][1 1]Both Male and Female approved — fairer outcome.
