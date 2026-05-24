@@ -1,0 +1,36 @@
+How should versioning, rollback and ownership differ for datasets compared to code repositories
+
+atasets and code repositories need different governance models because they behave differently in production. Here’s how versioning, rollback, and ownership typically diverge:
+datasets and code repositories need different governance models because they behave differently in production. Here’s how versioning, rollback, and ownership typically diverge: 
+
+Versioning:
+
+Code repositories
+Versioning is linear and incremental (commits, branches, tags).
+Each commit is small, atomic, and easily diffed.
+Tools: Git, GitHub, GitLab.
+Datasets
+Versioning must capture snapshots of entire datasets, not just incremental changes.
+Differences are often semantic (new samples, label corrections, rebalanced distributions) rather than line‑by‑line diffs.
+Requires data registries (e.g., DVC, MLflow, LakeFS) that store metadata, lineage, and hashes for reproducibility.
+Rollback:
+
+Code repositories
+Rollback is straightforward: revert a commit or redeploy a previous build.
+Impact is usually immediate and deterministic.
+Datasets
+Rollback means restoring a previous snapshot of the dataset.
+More complex because downstream models may need retraining to align with the restored data.
+Rollback often involves both data and model artefacts together (e.g., dataset v2.1 must pair with model v2.1).
+Ownership:
+
+Code repositories
+Owned by engineering teams; responsibility is clear (developers, reviewers, maintainers).
+Access control is usually role‑based (read/write/merge).
+Datasets
+Ownership is cross‑functional:
+Data engineers (pipelines, ingestion)
+Data scientists (labeling, preprocessing)
+Domain experts (validating correctness)
+Compliance/legal (privacy, regulatory oversight)
+Requires data stewards or governance committees to ensure ethical and legal use.
